@@ -47,7 +47,7 @@ static int failures = 0;
 } while (0)
 
 #define nu_assert_eq_str(expected, actual) do { \
-    if (expected != actual) { \
+    if (strcmp(expected, actual) != 0) { \
         snprintf(message, NANOUNIT_MESSAGE_SIZE, "%s:%d: expected:'%s', actual:'%s'", __FILE__, __LINE__, expected, actual); \
         return 1; \
     } \
