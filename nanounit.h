@@ -8,14 +8,12 @@ extern "C" {
 #include <stdio.h>
 #include <string.h>
 
-#define NANOUNIT_MESSAGE_SIZE 1024
-
-static char message[NANOUNIT_MESSAGE_SIZE];
+static char message[1024];
 static int tests_runs = 0;
 static int failures = 0;
 
 #define nu_fail() do { \
-    snprintf(message, NANOUNIT_MESSAGE_SIZE, "%s:%d: fail", __FILE__, __LINE__); \
+    sprintf(message, "%s:%d: fail", __FILE__, __LINE__); \
     return 1; \
 } while (0)
 
@@ -27,28 +25,28 @@ static int failures = 0;
 
 #define nu_assert_eq_int(expected, actual) do { \
     if (expected != actual) { \
-        snprintf(message, NANOUNIT_MESSAGE_SIZE, "%s:%d: expected:'%d', actual:'%d'", __FILE__, __LINE__, expected, actual); \
+        sprintf(message, "%s:%d: expected:'%d', actual:'%d'", __FILE__, __LINE__, expected, actual); \
         return 1; \
     } \
 } while (0)
 
 #define nu_assert_eq_float(expected, actual, delta) do { \
     if (!(expected - delta <= actual && actual <= expected + delta)) { \
-        snprintf(message, NANOUNIT_MESSAGE_SIZE, "%s:%d: expected:'%f', actual:'%f'", __FILE__, __LINE__, expected, actual); \
+        sprintf(message, "%s:%d: expected:'%f', actual:'%f'", __FILE__, __LINE__, expected, actual); \
         return 1; \
     } \
 } while (0)
 
 #define nu_assert_eq_ptr(expected, actual) do { \
     if (expected != actual) { \
-        snprintf(message, NANOUNIT_MESSAGE_SIZE, "%s:%d: expected:'%p', actual:'%p'", __FILE__, __LINE__, expected, actual); \
+        sprintf(message, "%s:%d: expected:'%p', actual:'%p'", __FILE__, __LINE__, expected, actual); \
         return 1; \
     } \
 } while (0)
 
 #define nu_assert_eq_str(expected, actual) do { \
     if (strcmp(expected, actual) != 0) { \
-        snprintf(message, NANOUNIT_MESSAGE_SIZE, "%s:%d: expected:'%s', actual:'%s'", __FILE__, __LINE__, expected, actual); \
+        sprintf(message, "%s:%d: expected:'%s', actual:'%s'", __FILE__, __LINE__, expected, actual); \
         return 1; \
     } \
 } while (0)
@@ -63,9 +61,7 @@ static int failures = 0;
     } \
 } while (0)
 
-#define nu_report() do { \
-    printf("\n### %s, %d tests, %d failures\n\n", __FILE__, tests_runs, failures); \
-} while(0)
+#define nu_report() (printf("\n### %s, %d tests, %d failures\n\n", __FILE__, tests_runs, failures))
 
 #ifdef __cplusplus
 } /* extern "C" */
