@@ -3,10 +3,10 @@ NanoUnit
 
 NanoUnit is a lightweight unit testing framework for C/C++.
 
-NanoUnit is based on ![MinUnit](http://www.jera.com/techinfo/jtns/jtn002.html).
+NanoUnit is based on [MinUnit](http://www.jera.com/techinfo/jtns/jtn002.html).
 
 ## What is difference between NanoUnit and MinUnit?
-### 1. Output Result
+#### 1. Output Result
 NanoUnit provides more detailed test results.
 
 ```
@@ -31,7 +31,7 @@ test_assert_eq_str_failed ... FAILED
 ### sample.c, 11 tests, 6 failures
 ```
 
-### 2. Assertion Types
+#### 2. Assertion Types
 NanoUnit provides the following assertion types:
 * nu_fail
 * nu_assert
