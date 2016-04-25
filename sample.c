@@ -82,5 +82,4 @@ int main(void)
     nu_run_test(test_assert_eq_str_passed);
     nu_run_test(test_assert_eq_str_failed);
     nu_report();
-    return 0;
 }

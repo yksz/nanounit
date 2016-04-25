@@ -61,7 +61,10 @@ static int failures = 0;
     } \
 } while (0)
 
-#define nu_report() (printf("\n### %s, %d tests, %d failures\n\n", __FILE__, tests_runs, failures))
+#define nu_report() do { \
+    printf("\n### %s, %d tests, %d failures\n\n", __FILE__, tests_runs, failures); \
+    return failures != 0; \
+} while (0)
 
 #ifdef __cplusplus
 } /* extern "C" */
